@@ -1,0 +1,64 @@
+{% extends "/templates/custom-web.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="header">
+        <h1>Delivery Details</h1>
+    </div>
+    <form id="delivery-form">
+        <label >Name: <input type="text" id="name1" name="first-name" required /></label>
+        <label >Phone: <input type="tel" id="phone" name="phone" required /></label>
+        <label >Email: <input type="email" id="email" name="email" required /></label>
+        <label >Address: <input type="text" id="address" name="address" required /></label>
+        <label >Bouquet Type:
+            <select id="bouquet_type" name="bouquet-type" required>
+                <option >(select one)</option>
+                <option >Red</option>
+                <option >Green</option>
+            </select>
+        </label>
+        <label >Gift Wrapping:
+            <select id="gift_wrapping" name="gift-wrapping" required>
+                <option >(select one)</option>
+                <option >Box</option>
+                <option >Packet</option>
+            </select>
+        </label>
+        <label><input type="checkbox" id="urgent_delivery" name="urgent_delivery"> Urgent Delivery</label>
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
+<script >
+    
+    document.getElementById('delivery-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        var firstName = document.getElementById('name1').value;
+        var phone = document.getElementById('phone').value;
+        var email = document.getElementById('email').value;
+        var address = document.getElementById('address').value;
+        var bouquetType = document.getElementById('bouquet_type').value;
+        var giftWrapping = document.getElementById('gift_wrapping').value;
+        var urgentDelivery = document.getElementById('urgent_delivery').checked;
+        var formData = {
+            'name': firstName,
+            'phone': phone,
+            'email': email,
+            'address': address,
+            'bouquet_type': bouquetType,
+            'gift_wrapping': giftWrapping,
+            'urgent_delivery': urgentDelivery
+        };
+        frappe.call({
+            method: 'interflora.event.orderreq.myfunc',
+            args: {
+                // firstName,phone,email,address,bouquetType,giftWrapping,urgentDelivery
+                   formData
+            }
+        })
+                // console.log(formData);
+            });
+</script>
+{% endblock %}
+
