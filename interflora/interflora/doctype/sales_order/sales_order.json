@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "SO-.####",
  "creation": "2024-03-21 01:09:08.503405",
  "default_view": "List",
  "doctype": "DocType",
@@ -15,7 +16,6 @@
   "gift_wrapping",
   "order_document",
   "grand_total",
-  "workflow_state",
   "amended_from"
  ],
  "fields": [
@@ -69,20 +69,16 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
-  },
-  {
-   "fieldname": "workflow_state",
-   "fieldtype": "Data",
-   "label": "workflow state"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-22 00:51:19.947093",
+ "modified": "2024-03-23 20:37:49.732813",
  "modified_by": "Administrator",
  "module": "Interflora",
  "name": "Sales Order",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
