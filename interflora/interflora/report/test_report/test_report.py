@@ -8,35 +8,61 @@ def execute(filters=None):
 def get_columns(filters):
     columns = [
         {
-            "label": "Name",
-            "fieldname": "name1",
-            "fieldtype": "Data",
-            "width": 250,
-		},
-        {
-            "label": "Phone",
-            "fieldname": "phone",
-            "fieldtype": "Data",
-            "width": 250,
-		},
-        {
-            "label": "Email",
-            "fieldname": "email",
-            "fieldtype": "Data",
-            "width": 250,
-		},
+            "fieldname":"docname",
+            "label":("Sales"),
+            "fieldtype": "Link",
+            "options" : "Sales Order",
+           "width":250
+        },
+         {
+            "fieldname":"docname",
+            "label":("Sales"),
+            "fieldtype": "Link",
+            "options" : "Order Request",
+           "width":250
+        },
+      
 	]
     return columns
 
 def get_data(filters):
     data = []
-    if filters.get('name'):
-          filters['name1'] = filters.get('name')
-    docs = frappe.get_all("Order Request",filters,"*")
+    my_filter = {}
+    if filters.get("from_date") and filters.get("to_date"):
+        my_filter['creation']=['between', [filters.get("from_date"),filters.get("to_date")]]
+    if filters.get("urgent"):
+        my_filter['urgent_delivery'] = filters.get("urgent") 
+    if filters.get("type"):
+        my_filter['gift_wrapping'] = filters.get("type") 
+    if filters.get("btype"):
+        my_filter['bouquet_type'] = filters.get("btype") 
+    # frappe.msgprint(f"{my_filter}")
+    docs = frappe.get_all("Sales Order",my_filter)
     for row in docs:
         data.append({
-            "name1":row.name1,
-            "phone":row.phone, 
-            "email":row.email,
+            "docname":row.name,   
         })
-    return data 
+        # frappe.msgprint(f"{data}")
+
+
+    return data   
+
+def get_data(filters):
+    data1 = []
+    my_filter = {}
+    if filters.get("from_date") and filters.get("to_date"):
+        my_filter['creation']=['between', [filters.get("from_date"),filters.get("to_date")]]
+    if filters.get("urgent"):
+        my_filter['urgent_delivery'] = filters.get("urgent") 
+    if filters.get("type"):
+        my_filter['gift_wrapping'] = filters.get("type") 
+    if filters.get("btype"):
+        my_filter['bouquet_type'] = filters.get("btype") 
+    # frappe.msgprint(f"{my_filter}")
+    docs = frappe.get_all("Order Request",my_filter)
+    for row in docs:
+        data1.append({
+            "docname":row.name,   
+        })
+        # frappe.msgprint(f"{data}")
+    return data1  

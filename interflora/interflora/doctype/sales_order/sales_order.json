@@ -11,54 +11,43 @@
   "customer_name",
   "phone",
   "email",
-  "bouquet_details",
+  "bouquet_type",
   "delivery_address",
   "gift_wrapping",
-  "order_document",
-  "grand_total",
+  "urgent_delivery",
+  "order_request",
   "amended_from"
  ],
  "fields": [
   {
+   "fetch_from": "order_request.urgent_delivery",
    "fieldname": "customer_name",
    "fieldtype": "Data",
    "label": "Customer Name"
   },
   {
+   "fetch_from": "order_request.phone",
    "fieldname": "phone",
    "fieldtype": "Data",
    "label": "Phone"
   },
   {
+   "fetch_from": "order_request.email",
    "fieldname": "email",
    "fieldtype": "Data",
    "label": "Email"
   },
   {
-   "fieldname": "bouquet_details",
-   "fieldtype": "Data",
-   "label": "Bouquet Details"
-  },
-  {
+   "fetch_from": "order_request.address",
    "fieldname": "delivery_address",
    "fieldtype": "Data",
    "label": "Delivery Address"
   },
   {
+   "fetch_from": "order_request.gift_wrapping",
    "fieldname": "gift_wrapping",
    "fieldtype": "Data",
    "label": "Gift Wrapping"
-  },
-  {
-   "fieldname": "order_document",
-   "fieldtype": "Link",
-   "label": "Order Document",
-   "options": "Order Request"
-  },
-  {
-   "fieldname": "grand_total",
-   "fieldtype": "Data",
-   "label": "Grand Total"
   },
   {
    "fieldname": "amended_from",
@@ -69,12 +58,30 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "order_request",
+   "fieldtype": "Link",
+   "label": "Order Request",
+   "options": "Order Request"
+  },
+  {
+   "fetch_from": "order_request.urgent_delivery",
+   "fieldname": "urgent_delivery",
+   "fieldtype": "Data",
+   "label": "Urgent Delivery"
+  },
+  {
+   "fetch_from": "order_request.bouquet_type",
+   "fieldname": "bouquet_type",
+   "fieldtype": "Data",
+   "label": "Bouquet type"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-23 20:37:49.732813",
+ "modified": "2024-03-27 00:26:03.104188",
  "modified_by": "Administrator",
  "module": "Interflora",
  "name": "Sales Order",
