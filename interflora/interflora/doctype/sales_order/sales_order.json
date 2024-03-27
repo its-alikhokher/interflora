@@ -16,6 +16,7 @@
   "gift_wrapping",
   "urgent_delivery",
   "order_request",
+  "price",
   "amended_from"
  ],
  "fields": [
@@ -76,12 +77,17 @@
    "fieldname": "bouquet_type",
    "fieldtype": "Data",
    "label": "Bouquet type"
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "label": "Price"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-27 00:26:03.104188",
+ "modified": "2024-03-27 02:23:14.341324",
  "modified_by": "Administrator",
  "module": "Interflora",
  "name": "Sales Order",

@@ -7,21 +7,17 @@ frappe.query_reports["Test Report"] = {
 		{
 			"fieldname":"from_date",
 			"label": __("From Date"),
-			"fieldtype": "Date",
-			'reqd': 0,
-			// "default": frappe.datetime.add_days(frappe.datetime.nowdate(), -30)
+			"fieldtype": "Date"
 		},
 		{
 			"fieldname":"to_date",
 			"label": __("To Date"),
-			"fieldtype": "Date",
-			'reqd': 0,
-			// "default":frappe.datetime.nowdate()
+			"fieldtype": "Date"
 		},
 		{
 			"fieldname":"urgent",
 			"label": __("Urgent Delivery"),
-			"fieldtype": "Check",
+			"fieldtype": "Check"
 		},
 		{
 			"fieldname":"type",
@@ -34,6 +30,16 @@ frappe.query_reports["Test Report"] = {
 			"label": __("Bouquet Type"),
 			"fieldtype": "Select",
 			"options" : "\nRed\nGreen"
+		},
+		{
+			"fieldname":"email",
+			"label": __("Email"),
+			"fieldtype": "Data"
+		},
+		{
+			"fieldname":"phone",
+			"label": __("Phone"),
+			"fieldtype": "Data"
 		},
 	]
 };

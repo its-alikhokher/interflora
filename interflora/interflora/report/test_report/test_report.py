@@ -14,13 +14,31 @@ def get_columns(filters):
             "options" : "Sales Order",
            "width":250
         },
-        #  {
-        #     "fieldname":"docname",
-        #     "label":("Sales"),
-        #     "fieldtype": "Link",
-        #     "options" : "Order Request",
-        #    "width":250
-        # },
+         {
+            "fieldname":"order_request",
+            "label":("Order Request"),
+            "fieldtype": "Link",
+            "options" : "Order Request",
+           "width":250
+        },
+         {
+            "fieldname":"price",
+            "label":("Price"),
+            "fieldtype": "currency",
+           "width":100
+        },
+        {
+            "fieldname":"email",
+            "label":("Email"),
+            "fieldtype": "currency",
+           "width":150
+        },
+        {
+            "fieldname":"phone",
+            "label":("Phone"),
+            "fieldtype": "currency",
+           "width":150
+        },
       
 	]
     return columns
@@ -35,12 +53,20 @@ def get_data(filters):
     if filters.get("type"):
         my_filter['gift_wrapping'] = filters.get("type") 
     if filters.get("btype"):
-        my_filter['bouquet_type'] = filters.get("btype") 
+        my_filter['bouquet_type'] = filters.get("btype")
+    if filters.get("email"):
+        my_filter['email'] = filters.get("email")
+    if filters.get("phone"):
+        my_filter['phone'] = filters.get("phone")
+     
+     
     # frappe.msgprint(f"{my_filter}")
-    docs = frappe.get_all("Sales Order",my_filter)
-    for row in docs:
-        data.append({
-            "docname":row.name,   
-        })
-        # frappe.msgprint(f"{data}")
+    sales_order_docs = frappe.get_all("Sales Order", my_filter, ["*"])
+    for row in sales_order_docs:
+        data.append({"docname": row.name,
+                     "order_request": row.order_request,
+                     "price": row.price,
+                     "email": row.email,
+                     "phone": row.phone
+                     })
     return data 
